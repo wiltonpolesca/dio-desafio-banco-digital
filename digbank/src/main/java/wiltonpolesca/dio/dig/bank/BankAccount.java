@@ -31,10 +31,10 @@ public abstract class BankAccount implements IAccount {
 
     public void withdrawal(double value) throws Exception {
 
-        withdraw("Withdrawal", value);
+        withdrawal("Withdrawal", value);
     }
 
-    public void withdraw(String description, double value) throws Exception {
+    public void withdrawal(String description, double value) throws Exception {
         checkValueAndBalance(value);
 
         if (balance - value >= 0) {
@@ -60,7 +60,7 @@ public abstract class BankAccount implements IAccount {
 
     public void transfer(double value, IAccount destination) throws Exception {
         checkValueAndBalance(value);
-        withdraw(String.format("Transfer to: %s - %s", destination.getBranch(), destination.getAccountNumber()), value);
+        withdrawal(String.format("Transfer to: %s - %s", destination.getBranch(), destination.getAccountNumber()), value);
         destination.deposit(
                 String.format("Transfer from: %s - %s", getBranch(), getAccountNumber()),
                 value);
